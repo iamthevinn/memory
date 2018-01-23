@@ -157,10 +157,6 @@ class Tiles extends React.Component {
     
   }
 
-  updateTile() {
-
-  }
-
   randomizeArray() {
     let randomArray = this.getRandomizedArray();
     for (let i = 0; i < randomArray.length; i++)
@@ -169,7 +165,6 @@ class Tiles extends React.Component {
   
   getRandomizedArray() {
     let randomArray = [];
-    console.log(this.state.tiles.length)
     while (randomArray.length < 4) {
       var randomNumber = Math.floor(Math.random() * this.state.tiles.length);
       if (!randomArray.includes(randomNumber))
@@ -187,14 +182,11 @@ class Tiles extends React.Component {
   
   newGame() {
     const newArray = generateTiles();
-    this.setState({tiles: newArray});
-    this.randomizeArray();
+    //this.setState({tiles: newArray});
+    this.setState({ tiles: newArray }, () => {this.randomizeArray();
+    }); 
   }
 
-  setFooterText() {
-    
-  }
-  
   render() {
     return (
       <div>
