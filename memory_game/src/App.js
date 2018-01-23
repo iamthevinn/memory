@@ -182,9 +182,7 @@ class Tiles extends React.Component {
   
   newGame() {
     const newArray = generateTiles();
-    //this.setState({tiles: newArray});
-    this.setState({ tiles: newArray }, () => {this.randomizeArray();
-    }); 
+    this.setState({ tiles: newArray }, () => {this.randomizeArray()}); 
   }
 
   render() {
