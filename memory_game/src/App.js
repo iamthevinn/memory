@@ -10,6 +10,8 @@ class Footer extends React.Component {
       return "Start Game"
     if (gameStatus === "check")
       return "Play Again"
+    if (gameStatus === "guess")
+      return "Guess the correct cells!"
   }
 
   render() {
@@ -53,14 +55,11 @@ const generateTiles = () => {
 }
 
 const getColor = (tile, gameState) => {
-  //if currentBoardstate is memorized AND square.systemSelected
   if (gameState === "memorize" && tile.systemSelected === true)
     return 'blue';
   else if (gameState === "guess" && tile.userSelected === true)
     return 'purple';
-  //else if currentBoardstate is checkstate
   else if (gameState === "check") {
-    //if square.systemSelected AND square.userSelected
     if (tile.systemSelected && tile.userSelected)
       return 'green'
     else if (tile.systemSelected && !tile.userSelected)
@@ -111,7 +110,6 @@ class Tiles extends React.Component {
       tempCount -= 1;
       this.setState({count: tempCount})
     }
-    
   }
 
   peek() {
